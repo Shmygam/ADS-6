@@ -10,15 +10,13 @@ class TPQueue {
     int last;
  public:
     TPQueue() :first(0), last(0) { }
-
     void push(T x) {
         int i = last++ ;
-        for (i; (--i >= first) && (arr[i % size].prior < x.prior);) {
+        for (i;(arr[i % size].prior < x.prior) && (--i >= first);) {
             arr[(i+1) % size] = arr[i % size];
         }
         arr[(i +1) % size] = x;
     }
-
     T pop() {
         return arr[(first++) % size];
     }
